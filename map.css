@@ -26,6 +26,19 @@ body {
   border-radius: 8px;
 }
 
+#map .map-error {
+  position: relative;
+  z-index: 2;
+  margin: 1em;
+  padding: 0.75em 1em;
+  background: #fff3cd;
+  border: 1px solid #e6c200;
+  border-radius: 6px;
+  font: 0.95rem/1.4 system-ui, sans-serif;
+  color: #533;
+  pointer-events: auto;
+}
+
 #map svg {
   position: absolute;
   z-index: 1;

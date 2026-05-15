@@ -1,4 +1,6 @@
-// Copy this file to config.local.js (same folder) and paste your Mapbox *public* token from
-// https://account.mapbox.com/access-tokens/ (it starts with pk.).
-// config.local.js is gitignored so it is not pushed to GitHub.
+// Local dev: copy to config.local.js and set your Mapbox *public* token (pk.).
+// config.local.js is gitignored and is not deployed to GitHub Pages.
+//
+// GitHub Pages: copy config.pages.example.js to config.pages.js, set the same token,
+// commit config.pages.js, and add a URL restriction in Mapbox for your github.io URL.
 export const MAPBOX_ACCESS_TOKEN = '';
