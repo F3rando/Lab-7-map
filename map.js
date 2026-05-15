@@ -1,11 +1,12 @@
 // Import Mapbox as an ESM module
 import mapboxgl from 'https://cdn.jsdelivr.net/npm/mapbox-gl@2.15.0/+esm';
+import { MAPBOX_ACCESS_TOKEN } from './config.local.js';
 
 // Check that Mapbox GL JS is loaded
 console.log('Mapbox GL JS Loaded:', mapboxgl);
 
-// Set your Mapbox access token here
-mapboxgl.accessToken = 'YOUR_ACCESS_TOKEN_HERE';
+// Token lives in gitignored config.local.js (see config.example.js)
+mapboxgl.accessToken = MAPBOX_ACCESS_TOKEN;
 
 // Initialize the map
 const map = new mapboxgl.Map({
