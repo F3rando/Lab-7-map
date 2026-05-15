@@ -8,3 +8,28 @@ body {
     margin: auto;
     padding: 1em;
   }
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: baseline;
+}
+
+header .time-filter {
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25em;
+}
+
+header .time-filter time,
+header .time-filter em {
+  display: block;
+}
+
+header .time-filter em {
+  color: #666;
+  font-style: italic;
+}
