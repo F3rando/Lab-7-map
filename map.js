@@ -3,17 +3,25 @@ import mapboxgl from 'https://cdn.jsdelivr.net/npm/mapbox-gl@2.15.0/+esm';
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 
 async function resolveMapboxToken() {
-  try {
-    const m = await import('./config.local.js');
-    if (m.MAPBOX_ACCESS_TOKEN) return m.MAPBOX_ACCESS_TOKEN.trim();
-  } catch {
-    /* config.local.js is gitignored — missing on GitHub Pages is expected */
+  // Query string busts the browser ES-module cache after you change token/config on GitHub Pages.
+  const bust = 'v=2';
+  const isDevHost =
+    typeof location !== 'undefined' &&
+    (location.hostname === 'localhost' || location.hostname === '127.0.0.1');
+
+  if (isDevHost) {
+    try {
+      const m = await import(`./config.local.js?${bust}`);
+      if (m.MAPBOX_ACCESS_TOKEN) return m.MAPBOX_ACCESS_TOKEN.trim();
+    } catch {
+      /* missing locally until you create config.local.js */
+    }
   }
   try {
-    const m = await import('./config.pages.js');
+    const m = await import(`./config.pages.js?${bust}`);
     if (m.MAPBOX_ACCESS_TOKEN) return m.MAPBOX_ACCESS_TOKEN.trim();
-  } catch {
-    /* optional: add config.pages.js for production deploy */
+  } catch (e) {
+    console.error('config.pages.js failed to load:', e);
   }
   return '';
 }
